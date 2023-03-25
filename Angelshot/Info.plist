@@ -51,10 +51,14 @@
 <key>UIAppFonts</key>
 <array>
 <string>InterMedium.ttf</string>
+<string>NunitoBold.ttf</string>
 <string>InterBlack.ttf</string>
 <string>InterRegular.ttf</string>
+<string>InterLight.ttf</string>
+<string>InterBold.ttf</string>
 <string>InterExtraBold.ttf</string>
 <string>InterSemiBold.ttf</string>
+<string>NunitoRegular.ttf</string>
 </array>
 </dict>
 </plist>

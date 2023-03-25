@@ -10,7 +10,7 @@ struct AngelshotApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            FirstpageView()
         }
     }
 }

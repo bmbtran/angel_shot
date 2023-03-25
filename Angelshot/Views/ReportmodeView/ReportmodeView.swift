@@ -4,366 +4,257 @@ struct ReportmodeView: View {
     @StateObject var reportmodeViewModel = ReportmodeViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        NavigationView {
+        VStack(alignment: .leading, spacing: 0) {
             VStack {
-                VStack(alignment: .trailing, spacing: 0) {
-                    VStack(alignment: .trailing, spacing: 0) {
-                        HStack {
-                            HStack {
-                                Image("img_941")
-                                    .resizable()
-                                    .frame(width: getRelativeWidth(28.0),
-                                           height: getRelativeHeight(11.0), alignment: .center)
-                                    .scaledToFit()
-                                    .clipped()
-                                    .padding(.vertical, getRelativeHeight(16.0))
-                                Spacer()
-                                ZStack(alignment: .bottomTrailing) {
-                                    Image("img_notch")
-                                        .resizable()
-                                        .frame(width: getRelativeWidth(219.0),
-                                               height: getRelativeHeight(27.0), alignment: .center)
-                                        .scaledToFit()
-                                        .clipped()
-                                        .padding(.trailing, getRelativeWidth(63.0))
-                                    Image("img_rightside")
-                                        .resizable()
-                                        .frame(width: getRelativeWidth(66.0),
-                                               height: getRelativeHeight(11.0), alignment: .center)
-                                        .scaledToFit()
-                                        .clipped()
-                                        .padding(.top, getRelativeHeight(16.33))
-                                        .padding(.leading, getRelativeWidth(215.67))
-                                }
-                                .hideNavigationBar()
-                                .frame(width: getRelativeWidth(282.0),
-                                       height: getRelativeHeight(27.0), alignment: .center)
-                            }
-                            .frame(width: getRelativeWidth(326.0), height: getRelativeHeight(27.0),
-                                   alignment: .leading)
-                        }
-                        .frame(width: getRelativeWidth(326.0), height: getRelativeHeight(27.0),
-                               alignment: .leading)
-                        .padding(.leading)
-                        .padding(.leading)
-                    }
-                    .frame(width: getRelativeWidth(344.0), height: getRelativeHeight(27.0),
-                           alignment: .leading)
-                    VStack {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            VStack {
-                                Group {
-                                    Text(StringConstants.kLblReportAPerson)
-                                        .font(FontScheme
-                                            .kInterSemiBold(size: getRelativeHeight(30.0)))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(232.0),
-                                               height: getRelativeHeight(30.0),
-                                               alignment: .topLeading)
-                                        .padding(.horizontal, getRelativeWidth(18.0))
-                                    Text(StringConstants.kMsgYourNameRequ)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(143.0),
-                                               height: getRelativeHeight(16.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(43.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    HStack {
-                                        TextField("", text: $reportmodeViewModel.rectangle240Text)
-                                            .padding()
-                                    }
-                                    .frame(width: getRelativeWidth(339.0),
-                                           height: getRelativeHeight(47.0), alignment: .center)
-                                    .background(ColorConstants.Bluegray100)
-                                    .padding(.top, getRelativeHeight(6.0))
-                                    .padding(.leading, getRelativeWidth(5.0))
-                                    Text(StringConstants.kMsgYourPhoneNumb)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.center)
-                                        .frame(width: getRelativeWidth(203.0),
-                                               height: getRelativeHeight(16.0), alignment: .center)
-                                        .padding(.top, getRelativeHeight(4.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    HStack {
-                                        TextField("", text: $reportmodeViewModel.rectangle242Text)
-                                            .padding()
-                                    }
-                                    .frame(width: getRelativeWidth(339.0),
-                                           height: getRelativeHeight(47.0), alignment: .center)
-                                    .background(ColorConstants.Bluegray100)
-                                    .padding(.leading, getRelativeWidth(5.0))
-                                    Text(StringConstants.kMsgYourEmailReq)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(141.0),
-                                               height: getRelativeHeight(16.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(4.0))
-                                        .padding(.leading, getRelativeWidth(5.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    HStack {
-                                        TextField("", text: $reportmodeViewModel.rectangle243Text)
-                                            .padding()
-                                    }
-                                    .frame(width: getRelativeWidth(339.0),
-                                           height: getRelativeHeight(47.0), alignment: .center)
-                                    .background(ColorConstants.Bluegray100)
-                                    .padding(.leading, getRelativeWidth(5.0))
-                                    Text(StringConstants.kMsgPerpetratorSN)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(198.0),
-                                               height: getRelativeHeight(16.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(6.0))
-                                        .padding(.leading, getRelativeWidth(6.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                }
-                                Group {
-                                    HStack {
-                                        TextField("", text: $reportmodeViewModel.rectangle244Text)
-                                            .padding()
-                                    }
-                                    .frame(width: getRelativeWidth(339.0),
-                                           height: getRelativeHeight(47.0), alignment: .center)
-                                    .background(ColorConstants.Bluegray100)
-                                    .padding(.leading, getRelativeWidth(5.0))
-                                    Text(StringConstants.kMsgIncludePreviou)
-                                        .font(FontScheme
-                                            .kInterExtraBold(size: getRelativeHeight(15.0)))
-                                        .fontWeight(.heavy)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.center)
-                                        .frame(width: getRelativeWidth(266.0),
-                                               height: getRelativeHeight(17.0), alignment: .center)
-                                        .padding(.top, getRelativeHeight(6.0))
-                                        .padding(.leading, getRelativeWidth(5.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    Text(StringConstants.kLblPartyAttended)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.center)
-                                        .frame(width: getRelativeWidth(102.0),
-                                               height: getRelativeHeight(14.0), alignment: .center)
-                                        .padding(.top, getRelativeHeight(9.0))
-                                        .padding(.leading, getRelativeWidth(6.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    HStack {
-                                        TextField("", text: $reportmodeViewModel.rectangle245Text)
-                                            .padding()
-                                    }
-                                    .frame(width: getRelativeWidth(339.0),
-                                           height: getRelativeHeight(47.0), alignment: .center)
-                                    .background(ColorConstants.Bluegray100)
-                                    .padding(.top, getRelativeHeight(4.0))
-                                    .padding(.leading, getRelativeWidth(5.0))
-                                    Text(StringConstants.kMsgDescriptionRe)
-                                        .font(FontScheme
-                                            .kInterMedium(size: getRelativeHeight(14.0)))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(148.0),
-                                               height: getRelativeHeight(16.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(7.0))
-                                        .padding(.leading, getRelativeWidth(5.0))
-                                        .padding(.trailing, getRelativeWidth(10.0))
-                                    ZStack {}
-                                        .hideNavigationBar()
-                                        .frame(width: getRelativeWidth(339.0),
-                                               height: getRelativeHeight(205.0), alignment: .center)
-                                        .background(ColorConstants.Bluegray100)
-                                        .padding(.top, getRelativeHeight(5.0))
-                                        .padding(.leading, getRelativeWidth(5.0))
-                                    Button(action: {}, label: {
-                                        HStack(spacing: 0) {
-                                            Text(StringConstants.kMsgClickHereToA)
-                                                .font(FontScheme
-                                                    .kInterSemiBold(size: getRelativeHeight(16.0)))
-                                                .fontWeight(.semibold)
-                                                .padding(.horizontal, getRelativeWidth(30.0))
-                                                .padding(.vertical, getRelativeHeight(16.0))
-                                                .foregroundColor(ColorConstants.Green400)
-                                                .minimumScaleFactor(0.5)
-                                                .multilineTextAlignment(.center)
-                                                .frame(width: getRelativeWidth(344.0),
-                                                       height: getRelativeHeight(51.0),
-                                                       alignment: .center)
-                                                .background(RoundedCorners(topLeft: 25.5,
-                                                                           topRight: 25.5,
-                                                                           bottomLeft: 25.5,
-                                                                           bottomRight: 25.5)
-                                                        .fill(ColorConstants.WhiteA700))
-                                                .padding(.top, getRelativeHeight(17.0))
-                                        }
-                                    })
-                                    .frame(width: getRelativeWidth(344.0),
-                                           height: getRelativeHeight(51.0), alignment: .center)
-                                    .background(RoundedCorners(topLeft: 25.5, topRight: 25.5,
-                                                               bottomLeft: 25.5, bottomRight: 25.5)
-                                            .fill(ColorConstants.WhiteA700))
-                                    .padding(.top, getRelativeHeight(17.0))
-                                    Text(StringConstants.kMsgWhatActionDo)
-                                        .font(FontScheme
-                                            .kInterSemiBold(size: getRelativeHeight(16.0)))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(256.0),
-                                               height: getRelativeHeight(18.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(15.0))
-                                        .padding(.horizontal, getRelativeWidth(33.0))
-                                }
-                                Group {
-                                    Button(action: {
-                                        reportmodeViewModel.nextScreen = "ReportmodeTwoView"
-                                    }, label: {
-                                        HStack(spacing: 0) {
-                                            Text(StringConstants.kLblReportToHost)
-                                                .font(FontScheme
-                                                    .kInterSemiBold(size: getRelativeHeight(16.0)))
-                                                .fontWeight(.semibold)
-                                                .padding(.horizontal, getRelativeWidth(30.0))
-                                                .padding(.vertical, getRelativeHeight(17.0))
-                                                .foregroundColor(ColorConstants.Green400)
-                                                .minimumScaleFactor(0.5)
-                                                .multilineTextAlignment(.center)
-                                                .frame(width: getRelativeWidth(311.0),
-                                                       height: getRelativeHeight(51.0),
-                                                       alignment: .center)
-                                                .background(RoundedCorners(topLeft: 25.5,
-                                                                           topRight: 25.5,
-                                                                           bottomLeft: 25.5,
-                                                                           bottomRight: 25.5)
-                                                        .fill(ColorConstants.WhiteA700))
-                                                .padding(.top, getRelativeHeight(20.0))
-                                                .padding(.leading, getRelativeWidth(18.0))
-                                                .padding(.trailing, getRelativeWidth(15.0))
-                                        }
-                                    })
-                                    .frame(width: getRelativeWidth(311.0),
-                                           height: getRelativeHeight(51.0), alignment: .center)
-                                    .background(RoundedCorners(topLeft: 25.5, topRight: 25.5,
-                                                               bottomLeft: 25.5, bottomRight: 25.5)
-                                            .fill(ColorConstants.WhiteA700))
-                                    .padding(.top, getRelativeHeight(20.0))
-                                    .padding(.leading, getRelativeWidth(18.0))
-                                    .padding(.trailing, getRelativeWidth(15.0))
-                                    Button(action: {
-                                        reportmodeViewModel.nextScreen = "ReportmodeOneView"
-                                    }, label: {
-                                        HStack(spacing: 0) {
-                                            Text(StringConstants.kLblReportToUsfpd)
-                                                .font(FontScheme
-                                                    .kInterSemiBold(size: getRelativeHeight(16.0)))
-                                                .fontWeight(.semibold)
-                                                .padding(.horizontal, getRelativeWidth(30.0))
-                                                .padding(.vertical, getRelativeHeight(17.0))
-                                                .foregroundColor(ColorConstants.Green400)
-                                                .minimumScaleFactor(0.5)
-                                                .multilineTextAlignment(.center)
-                                                .frame(width: getRelativeWidth(311.0),
-                                                       height: getRelativeHeight(51.0),
-                                                       alignment: .center)
-                                                .background(RoundedCorners(topLeft: 25.5,
-                                                                           topRight: 25.5,
-                                                                           bottomLeft: 25.5,
-                                                                           bottomRight: 25.5)
-                                                        .fill(ColorConstants.WhiteA700))
-                                                .padding(.top, getRelativeHeight(15.0))
-                                                .padding(.leading, getRelativeWidth(18.0))
-                                                .padding(.trailing, getRelativeWidth(13.0))
-                                        }
-                                    })
-                                    .frame(width: getRelativeWidth(311.0),
-                                           height: getRelativeHeight(51.0), alignment: .center)
-                                    .background(RoundedCorners(topLeft: 25.5, topRight: 25.5,
-                                                               bottomLeft: 25.5, bottomRight: 25.5)
-                                            .fill(ColorConstants.WhiteA700))
-                                    .padding(.top, getRelativeHeight(15.0))
-                                    .padding(.leading, getRelativeWidth(18.0))
-                                    .padding(.trailing, getRelativeWidth(13.0))
-                                    Text(StringConstants.kLblReturnToMenu)
-                                        .font(FontScheme
-                                            .kInterSemiBold(size: getRelativeHeight(16.0)))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(ColorConstants.WhiteA700)
-                                        .minimumScaleFactor(0.5)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(width: getRelativeWidth(116.0),
-                                               height: getRelativeHeight(16.0),
-                                               alignment: .topLeading)
-                                        .padding(.top, getRelativeHeight(27.0))
-                                        .padding(.horizontal, getRelativeWidth(18.0))
-                                        .onTapGesture {
-                                            reportmodeViewModel.nextScreen = "Emergency1View"
-                                        }
-                                }
-                            }
-                            .frame(width: getRelativeWidth(344.0), alignment: .topLeading)
-                        }
-                    }
-                    .frame(width: getRelativeWidth(344.0), height: UIScreen.main.bounds.height,
+                Text(StringConstants.kLblReportAPerson)
+                    .font(FontScheme.kInterBlack(size: getRelativeHeight(30.0)))
+                    .fontWeight(.black)
+                    .foregroundColor(ColorConstants.Black900)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: getRelativeWidth(239.0), height: getRelativeHeight(30.0),
                            alignment: .topLeading)
-                }
-                .frame(width: getRelativeWidth(344.0), alignment: .topLeading)
-                .background(ColorConstants.Green400)
-                .padding(.top, getRelativeHeight(30.0))
-                .padding(.bottom, getRelativeHeight(10.0))
+                    .padding(.horizontal, getRelativeWidth(36.0))
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(30.0),
+                   alignment: .center)
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack(alignment: .leading, spacing: 0) {
+                Text(StringConstants.kMsgYourNameRequ)
+                    .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
+                    .fontWeight(.bold)
+                    .foregroundColor(ColorConstants.Black900)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: getRelativeWidth(164.0), height: getRelativeHeight(16.0),
+                           alignment: .topLeading)
+                    .padding(.leading, getRelativeWidth(7.0))
+                    .padding(.trailing, getRelativeWidth(7.0))
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(16.0),
+                   alignment: .center)
+            .padding(.top, getRelativeHeight(29.0))
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack {
                 Group {
-                    NavigationLink(destination: ReportmodeOneView(),
-                                   tag: "ReportmodeOneView",
-                                   selection: $reportmodeViewModel.nextScreen,
-                                   label: {
-                                       EmptyView()
-                                   })
-                    NavigationLink(destination: Emergency1View(),
-                                   tag: "Emergency1View",
-                                   selection: $reportmodeViewModel.nextScreen,
-                                   label: {
-                                       EmptyView()
-                                   })
-                    NavigationLink(destination: ReportmodeTwoView(),
-                                   tag: "ReportmodeTwoView",
-                                   selection: $reportmodeViewModel.nextScreen,
-                                   label: {
-                                       EmptyView()
-                                   })
+                    HStack {
+                        TextField(StringConstants.kLblEnterYourName,
+                                  text: $reportmodeViewModel.frameText)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .foregroundColor(ColorConstants.Bluegray100)
+                            .padding()
+                            .keyboardType(.alphabet)
+                    }
+                    .onChange(of: reportmodeViewModel.frameText) { newValue in
+
+                        reportmodeViewModel.isValidFrameText = newValue.isText(isMandatory: false)
+                    }
+                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                           alignment: .center)
+                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                            bottomRight: 5.0)
+                            .stroke(ColorConstants.Gray300,
+                                    lineWidth: 1))
+                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                               bottomRight: 5.0)
+                            .fill(ColorConstants.WhiteA700))
+                    .padding(.leading, getRelativeWidth(7.0))
+                    if !reportmodeViewModel.isValidFrameText {
+                        Text("Please enter valid text.")
+                            .foregroundColor(Color.red)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                                   alignment: .center)
+                    }
                 }
             }
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .background(ColorConstants.Green400)
-            .ignoresSafeArea()
-            .hideNavigationBar()
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(48.0),
+                   alignment: .center)
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack(alignment: .leading, spacing: 0) {
+                Text(StringConstants.kMsgYourPhoneNumb)
+                    .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
+                    .fontWeight(.bold)
+                    .foregroundColor(ColorConstants.Black900)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: getRelativeWidth(235.0), height: getRelativeHeight(16.0),
+                           alignment: .topLeading)
+                    .padding(.leading, getRelativeWidth(7.0))
+                    .padding(.trailing, getRelativeWidth(7.0))
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(16.0),
+                   alignment: .center)
+            .padding(.top, getRelativeHeight(26.0))
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack {
+                Group {
+                    HStack {
+                        TextField(StringConstants.kMsgEnterYourNum,
+                                  text: $reportmodeViewModel.languageText)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .foregroundColor(ColorConstants.Bluegray100)
+                            .padding()
+                            .keyboardType(.numberPad)
+                    }
+                    .onChange(of: reportmodeViewModel.languageText) { newValue in
+
+                        reportmodeViewModel.isValidLanguageText = newValue
+                            .isNumeric(isMandatory: false)
+                    }
+                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                           alignment: .center)
+                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                            bottomRight: 5.0)
+                            .stroke(ColorConstants.Gray300,
+                                    lineWidth: 1))
+                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                               bottomRight: 5.0)
+                            .fill(ColorConstants.WhiteA700))
+                    .padding(.leading, getRelativeWidth(7.0))
+                    if !reportmodeViewModel.isValidLanguageText {
+                        Text("Please enter valid number.")
+                            .foregroundColor(Color.red)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                                   alignment: .center)
+                    }
+                }
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(48.0),
+                   alignment: .center)
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack(alignment: .leading, spacing: 0) {
+                Text(StringConstants.kLblYourEmail)
+                    .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
+                    .fontWeight(.bold)
+                    .foregroundColor(ColorConstants.Black900)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: getRelativeWidth(80.0), height: getRelativeHeight(16.0),
+                           alignment: .topLeading)
+                    .padding(.leading, getRelativeWidth(6.0))
+                    .padding(.trailing, getRelativeWidth(6.0))
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(16.0),
+                   alignment: .center)
+            .padding(.top, getRelativeHeight(16.0))
+            .padding(.horizontal, getRelativeWidth(39.0))
+            VStack {
+                Group {
+                    HStack {
+                        TextField(StringConstants.kMsgEnterYourEmai2,
+                                  text: $reportmodeViewModel.frameoneText)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .foregroundColor(ColorConstants.Bluegray100)
+                            .padding()
+                            .keyboardType(.emailAddress)
+                    }
+                    .onChange(of: reportmodeViewModel.frameoneText) { newValue in
+
+                        reportmodeViewModel.isValidFrameoneText = newValue
+                            .isValidEmail(isMandatory: true)
+                    }
+                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                           alignment: .center)
+                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                            bottomRight: 5.0)
+                            .stroke(ColorConstants.Gray300,
+                                    lineWidth: 1))
+                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                               bottomRight: 5.0)
+                            .fill(ColorConstants.WhiteA700))
+                    .padding(.leading, getRelativeWidth(6.0))
+                    if !reportmodeViewModel.isValidFrameoneText {
+                        Text("Please enter valid email.")
+                            .foregroundColor(Color.red)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                                   alignment: .center)
+                    }
+                }
+                ZStack(alignment: .leading) {
+                    Text(StringConstants.kMsgDescriptionRe)
+                        .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
+                        .fontWeight(.bold)
+                        .foregroundColor(ColorConstants.Black900)
+                        .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: getRelativeWidth(176.0), height: getRelativeHeight(16.0),
+                               alignment: .topLeading)
+                        .padding(.bottom, getRelativeHeight(166.01))
+                        .padding(.trailing, getRelativeWidth(125.0))
+                    VStack {
+                        Text(StringConstants.kMsgBrieflyDescrib)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .fontWeight(.regular)
+                            .foregroundColor(ColorConstants.Bluegray100)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: getRelativeWidth(188.0), height: getRelativeHeight(14.0),
+                                   alignment: .topLeading)
+                            .padding(.vertical, getRelativeHeight(18.0))
+                            .padding(.horizontal, getRelativeWidth(15.0))
+                    }
+                    .frame(width: getRelativeWidth(303.0), height: getRelativeHeight(190.0),
+                           alignment: .leading)
+                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                            bottomRight: 5.0)
+                            .stroke(ColorConstants.Gray300,
+                                    lineWidth: 1))
+                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                               bottomRight: 5.0)
+                            .fill(ColorConstants.WhiteA700))
+                }
+                .hideNavigationBar()
+                .frame(width: getRelativeWidth(303.0), height: getRelativeHeight(190.0),
+                       alignment: .center)
+                .padding(.top, getRelativeHeight(41.0))
+                .padding(.horizontal, getRelativeWidth(5.0))
+                Button(action: {}, label: {
+                    HStack(spacing: 0) {
+                        Text(StringConstants.kMsgReportToPolic)
+                            .font(FontScheme.kInterSemiBold(size: getRelativeHeight(16.0)))
+                            .fontWeight(.semibold)
+                            .padding(.horizontal, getRelativeWidth(30.0))
+                            .padding(.vertical, getRelativeHeight(16.0))
+                            .foregroundColor(ColorConstants.Green400)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.center)
+                            .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
+                                   alignment: .center)
+                            .background(RoundedCorners(topLeft: 25.5, topRight: 25.5,
+                                                       bottomLeft: 25.5, bottomRight: 25.5)
+                                    .fill(ColorConstants.WhiteA700))
+                            .padding(.top, getRelativeHeight(43.0))
+                    }
+                })
+                .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
+                       alignment: .center)
+                .background(RoundedCorners(topLeft: 25.5, topRight: 25.5, bottomLeft: 25.5,
+                                           bottomRight: 25.5)
+                        .fill(ColorConstants.WhiteA700))
+                .padding(.top, getRelativeHeight(43.0))
+                Text(StringConstants.kLblReturnToMenu)
+                    .font(FontScheme.kInterSemiBold(size: getRelativeHeight(16.0)))
+                    .fontWeight(.semibold)
+                    .foregroundColor(ColorConstants.WhiteA700)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: getRelativeWidth(116.0), height: getRelativeHeight(16.0),
+                           alignment: .topLeading)
+                    .padding(.top, getRelativeHeight(18.0))
+                    .padding(.horizontal, getRelativeWidth(98.0))
+            }
+            .frame(width: getRelativeWidth(312.0), height: getRelativeHeight(407.0),
+                   alignment: .center)
+            .padding(.top, getRelativeHeight(5.0))
+            .padding(.horizontal, getRelativeWidth(39.0))
         }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        .background(LinearGradient(gradient: Gradient(colors: [ColorConstants.CyanA700,
+                                                               ColorConstants.LightGreenA101]),
+            startPoint: .topLeading, endPoint: .bottomTrailing))
         .hideNavigationBar()
     }
 }

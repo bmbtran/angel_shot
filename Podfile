@@ -11,4 +11,12 @@ post_install do |installer|
 target 'Angelshot' do
   use_frameworks!
 	pod 'Alamofire'
+
+	pod 'FloatingLabelTextFieldSwiftUI'
+
+	pod 'FBSDKCoreKit'
+
+	pod 'FBSDKLoginKit'
+
+	pod 'GoogleSignIn'
 end
