@@ -61,6 +61,10 @@ We were enable to find following Fonts, Please add manually to ```Resources/Font
 ```
 Inter-Black
 Inter-SemiBold
+Inter-ExtraBold
+Inter-Bold
 InterRegular
 Inter-Medium
-Inter-ExtraBold```
+Inter-Light
+Nunito-Regular
+Nunito-Bold```
