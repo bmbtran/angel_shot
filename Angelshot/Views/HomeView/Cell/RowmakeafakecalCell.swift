@@ -34,9 +34,6 @@ struct RowmakeafakecalCell: View {
                     .padding(.vertical, getRelativeHeight(4.0))
                     .padding(.horizontal, getRelativeWidth(13.0))
             }
-            .onTapGesture {
-                columnmakeafakecalClick?()
-            }
             .frame(width: getRelativeWidth(165.0), height: getRelativeHeight(120.0),
                    alignment: .leading)
             .background(RoundedCorners(topLeft: 10.0, topRight: 10.0, bottomLeft: 10.0,
@@ -81,9 +78,6 @@ struct RowmakeafakecalCell: View {
                        alignment: .leading)
                 .padding(.vertical, getRelativeHeight(1.0))
                 .padding(.horizontal, getRelativeWidth(10.0))
-            }
-            .onTapGesture {
-                columnsendsmsClick?()
             }
             .frame(width: getRelativeWidth(165.0), height: getRelativeHeight(120.0),
                    alignment: .leading)

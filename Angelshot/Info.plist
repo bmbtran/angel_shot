@@ -60,5 +60,5 @@
 <string>InterSemiBold.ttf</string>
 <string>NunitoRegular.ttf</string>
 </array>
-<key>NSLocationUsageDescription</key><string>Allow Currunt location for google Maps</string><key>NSLocationWhenInUseUsageDescription</key><string>Allow Currunt location for google Maps</string><key>NSCameraUsageDescription</key><string>Your app uses the device camera</string><key>NSPhotoLibraryUsageDescription</key><string>Your app accesses the user's photo library</string><key>NSLocationAlwaysAndWhenInUseUsageDescription</key><string>Your app uses location services always and also when the app is running</string></dict>
+<key>NSLocationUsageDescription</key><string>Allow Currunt location for google Maps</string><key>NSLocationWhenInUseUsageDescription</key><string>Allow Currunt location for google Maps</string></dict>
 </plist>

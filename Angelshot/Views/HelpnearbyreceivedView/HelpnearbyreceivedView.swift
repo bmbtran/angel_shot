@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct HelpnearbyreceivedView: View {
-    @StateObject var helpnearbyreceivedViewModel =
-        HelpnearbyreceivedViewModel(_isOpen: .constant(false))
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var isOpen: Bool
     var body: some View {
         VStack {
             VStack {
@@ -72,31 +71,6 @@ struct HelpnearbyreceivedView: View {
                                        bottomRight: 34.0))
         }
         .frame(height: UIScreen.main.bounds.height)
-        .actionSheet(isPresented: $helpnearbyreceivedViewModel.isActionSheetShow, content: {
-            ActionSheet(title: Text("Choose"), buttons: [
-                .default(Text("Camera"), action: {
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        helpnearbyreceivedViewModel.imagePickerSource = .camera
-                        helpnearbyreceivedViewModel.isImagePickerShow = true
-                    } else {
-                        helpnearbyreceivedViewModel.showAlert("Error", "Camera is not available!")
-                    }
-                }),
-                .default(Text("Photo Library"), action: {
-                    helpnearbyreceivedViewModel.imagePickerSource = .photoLibrary
-                    helpnearbyreceivedViewModel.isImagePickerShow = true
-                }),
-                .destructive(Text("Cancel"))
-            ])
-        })
-        .sheet(isPresented: $helpnearbyreceivedViewModel.isImagePickerShow, content: {
-            MediaPicker(sourceType: helpnearbyreceivedViewModel.imagePickerSource,
-                        mediaTypes: ["public.image"]) { image, url in
-                if let image = image {
-                    helpnearbyreceivedViewModel.selectedImage = image
-                }
-            }
-        })
         .hideNavigationBar()
     }
 }

@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ReportmodeOneView: View {
-    @StateObject var reportmodeOneViewModel = ReportmodeOneViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var frameText: String = ""
     var body: some View {
         ZStack(alignment: .center) {
             VStack {
@@ -35,38 +35,23 @@ struct ReportmodeOneView: View {
                            alignment: .topLeading)
                     .padding(.top, getRelativeHeight(29.0))
                     .padding(.horizontal, getRelativeWidth(17.0))
-                Group {
-                    HStack {
-                        TextField(StringConstants.kLblEnterYourName,
-                                  text: $reportmodeOneViewModel.frameText)
-                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
-                            .foregroundColor(ColorConstants.Bluegray100)
-                            .padding()
-                            .keyboardType(.alphabet)
-                    }
-                    .onChange(of: reportmodeOneViewModel.frameText) { newValue in
-
-                        reportmodeOneViewModel.isValidFrameText = newValue
-                            .isText(isMandatory: false)
-                    }
-                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
-                           alignment: .trailing)
-                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                            bottomRight: 5.0)
-                            .stroke(ColorConstants.Gray300,
-                                    lineWidth: 1))
-                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                               bottomRight: 5.0)
-                            .fill(ColorConstants.WhiteA700))
-                    .padding(.leading, getRelativeWidth(10.0))
-                    if !reportmodeOneViewModel.isValidFrameText {
-                        Text("Please enter valid text.")
-                            .foregroundColor(Color.red)
-                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
-                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
-                                   alignment: .trailing)
-                    }
+                HStack {
+                    TextField(StringConstants.kLblEnterYourName, text: $frameText)
+                        .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                        .foregroundColor(ColorConstants.Bluegray100)
+                        .padding()
+                        .keyboardType(.alphabet)
                 }
+                .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                       alignment: .trailing)
+                .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                        bottomRight: 5.0)
+                        .stroke(ColorConstants.Gray300,
+                                lineWidth: 1))
+                .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                           bottomRight: 5.0)
+                        .fill(ColorConstants.WhiteA700))
+                .padding(.leading, getRelativeWidth(10.0))
                 Text(StringConstants.kMsgYourPhoneNumb)
                     .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
                     .fontWeight(.bold)
@@ -280,31 +265,6 @@ struct ReportmodeOneView: View {
         .background(LinearGradient(gradient: Gradient(colors: [ColorConstants.CyanA700,
                                                                ColorConstants.LightGreenA101]),
             startPoint: .topLeading, endPoint: .bottomTrailing))
-        .actionSheet(isPresented: $reportmodeOneViewModel.isActionSheetShow, content: {
-            ActionSheet(title: Text("Choose"), buttons: [
-                .default(Text("Camera"), action: {
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        reportmodeOneViewModel.imagePickerSource = .camera
-                        reportmodeOneViewModel.isImagePickerShow = true
-                    } else {
-                        reportmodeOneViewModel.showAlert("Error", "Camera is not available!")
-                    }
-                }),
-                .default(Text("Photo Library"), action: {
-                    reportmodeOneViewModel.imagePickerSource = .photoLibrary
-                    reportmodeOneViewModel.isImagePickerShow = true
-                }),
-                .destructive(Text("Cancel"))
-            ])
-        })
-        .sheet(isPresented: $reportmodeOneViewModel.isImagePickerShow, content: {
-            MediaPicker(sourceType: reportmodeOneViewModel.imagePickerSource,
-                        mediaTypes: ["public.image"]) { image, url in
-                if let image = image {
-                    reportmodeOneViewModel.selectedImage = image
-                }
-            }
-        })
     }
 }
 

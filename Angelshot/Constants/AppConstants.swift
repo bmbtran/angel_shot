@@ -5,7 +5,5 @@
 import Foundation
 
 struct AppConstants {
-    static let serverURL: String = ""
-
-    static let googleMapsApiKey = "API_KEY_HERE"
+    static let serverURL: String = "@{serverURL}"
 }

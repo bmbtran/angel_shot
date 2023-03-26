@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AllowlocationView: View {
-    @StateObject var allowlocationViewModel = AllowlocationViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack {
@@ -56,15 +55,6 @@ struct AllowlocationView: View {
                         .padding(.leading, getRelativeWidth(8.0))
                         .padding(.trailing, getRelativeWidth(103.0))
                 }
-                .onTapGesture {
-                    let location = LocationPermission()
-                    location.request()
-                    location.result = { isGranted in
-                        if !isGranted {
-                            location.onDeniedOrRestricted()
-                        }
-                    }
-                }
                 .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
                        alignment: .center)
                 .background(RoundedCorners(topLeft: 25.5, topRight: 25.5, bottomLeft: 25.5,
@@ -81,31 +71,6 @@ struct AllowlocationView: View {
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .background(ColorConstants.WhiteA700)
         .ignoresSafeArea()
-        .actionSheet(isPresented: $allowlocationViewModel.isActionSheetShow, content: {
-            ActionSheet(title: Text("Choose"), buttons: [
-                .default(Text("Camera"), action: {
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        allowlocationViewModel.imagePickerSource = .camera
-                        allowlocationViewModel.isImagePickerShow = true
-                    } else {
-                        allowlocationViewModel.showAlert("Error", "Camera is not available!")
-                    }
-                }),
-                .default(Text("Photo Library"), action: {
-                    allowlocationViewModel.imagePickerSource = .photoLibrary
-                    allowlocationViewModel.isImagePickerShow = true
-                }),
-                .destructive(Text("Cancel"))
-            ])
-        })
-        .sheet(isPresented: $allowlocationViewModel.isImagePickerShow, content: {
-            MediaPicker(sourceType: allowlocationViewModel.imagePickerSource,
-                        mediaTypes: ["public.image"]) { image, url in
-                if let image = image {
-                    allowlocationViewModel.selectedImage = image
-                }
-            }
-        })
         .hideNavigationBar()
     }
 }

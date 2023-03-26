@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SmsTwoView: View {
-    @StateObject var smsTwoViewModel = SmsTwoViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack {
@@ -174,31 +173,6 @@ struct SmsTwoView: View {
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         .background(ColorConstants.WhiteA700)
         .ignoresSafeArea()
-        .actionSheet(isPresented: $smsTwoViewModel.isActionSheetShow, content: {
-            ActionSheet(title: Text("Choose"), buttons: [
-                .default(Text("Camera"), action: {
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        smsTwoViewModel.imagePickerSource = .camera
-                        smsTwoViewModel.isImagePickerShow = true
-                    } else {
-                        smsTwoViewModel.showAlert("Error", "Camera is not available!")
-                    }
-                }),
-                .default(Text("Photo Library"), action: {
-                    smsTwoViewModel.imagePickerSource = .photoLibrary
-                    smsTwoViewModel.isImagePickerShow = true
-                }),
-                .destructive(Text("Cancel"))
-            ])
-        })
-        .sheet(isPresented: $smsTwoViewModel.isImagePickerShow, content: {
-            MediaPicker(sourceType: smsTwoViewModel.imagePickerSource,
-                        mediaTypes: ["public.image"]) { image, url in
-                if let image = image {
-                    smsTwoViewModel.selectedImage = image
-                }
-            }
-        })
         .hideNavigationBar()
     }
 }
