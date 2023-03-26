@@ -1,6 +1,4 @@
-
 import Foundation
-import GoogleMaps
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -8,7 +6,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication
                          .LaunchOptionsKey: Any]? = nil) -> Bool
     {
-        GMSServices.provideAPIKey(AppConstants.googleMapsApiKey)
         return true
     }
 }

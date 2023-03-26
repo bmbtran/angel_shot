@@ -14,5 +14,9 @@ target 'Angelshot' do
 
 	pod 'FloatingLabelTextFieldSwiftUI'
 
-	pod 'GoogleMaps', '4.1.0'
+	pod 'GoogleSignIn'
+
+	pod 'FBSDKCoreKit'
+
+	pod 'FBSDKLoginKit'
 end

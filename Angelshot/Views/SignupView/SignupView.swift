@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct SignupView: View {
+    @StateObject var signupViewModel = SignupViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var frameText: String = ""
-    @State private var frameoneText: String = ""
     var body: some View {
-        VStack {
+        NavigationView {
             VStack {
                 VStack {
                     Text(StringConstants.kLblSignUp)
@@ -16,7 +15,8 @@ struct SignupView: View {
                         .multilineTextAlignment(.leading)
                         .frame(width: getRelativeWidth(118.0), height: getRelativeHeight(32.0),
                                alignment: .topLeading)
-                        .padding(.horizontal, getRelativeWidth(23.0))
+                        .padding(.top, getRelativeHeight(129.0))
+                        .padding(.horizontal, getRelativeWidth(39.0))
                     Text(StringConstants.kLblAddAPhoto)
                         .font(FontScheme.kInterMedium(size: getRelativeHeight(14.0)))
                         .fontWeight(.medium)
@@ -26,7 +26,7 @@ struct SignupView: View {
                         .frame(width: getRelativeWidth(84.0), height: getRelativeHeight(14.0),
                                alignment: .topLeading)
                         .padding(.top, getRelativeHeight(13.0))
-                        .padding(.horizontal, getRelativeWidth(23.0))
+                        .padding(.horizontal, getRelativeWidth(39.0))
                     ZStack(alignment: .bottomTrailing) {
                         Image("img_user1")
                             .resizable()
@@ -59,7 +59,7 @@ struct SignupView: View {
                     .frame(width: getRelativeWidth(95.0), height: getRelativeWidth(95.0),
                            alignment: .center)
                     .padding(.top, getRelativeHeight(6.0))
-                    .padding(.horizontal, getRelativeWidth(23.0))
+                    .padding(.horizontal, getRelativeWidth(39.0))
                     Text(StringConstants.kMsgPleaseNoteTha)
                         .font(FontScheme.kInterMedium(size: getRelativeHeight(12.0)))
                         .fontWeight(.medium)
@@ -69,46 +69,55 @@ struct SignupView: View {
                         .frame(width: getRelativeWidth(265.0), height: getRelativeHeight(29.0),
                                alignment: .center)
                         .padding(.top, getRelativeHeight(7.0))
-                        .padding(.horizontal, getRelativeWidth(23.0))
-                }
-                .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(197.0),
-                       alignment: .center)
-                .padding(.top, getRelativeHeight(129.0))
-                .padding(.horizontal, getRelativeWidth(39.0))
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(StringConstants.kLblYourEmail)
-                        .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
-                        .fontWeight(.bold)
-                        .foregroundColor(ColorConstants.Black900)
-                        .minimumScaleFactor(0.5)
-                        .multilineTextAlignment(.leading)
-                        .frame(width: getRelativeWidth(80.0), height: getRelativeHeight(16.0),
-                               alignment: .topLeading)
-                        .padding(.leading, getRelativeWidth(4.0))
-                        .padding(.trailing, getRelativeWidth(4.0))
-                }
-                .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(16.0),
-                       alignment: .center)
-                .padding(.top, getRelativeHeight(13.0))
-                .padding(.horizontal, getRelativeWidth(39.0))
-                VStack {
-                    HStack {
-                        TextField(StringConstants.kMsgEnterYourEmai2, text: $frameText)
-                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
-                            .foregroundColor(ColorConstants.Bluegray100)
-                            .padding()
-                            .keyboardType(.emailAddress)
+                        .padding(.horizontal, getRelativeWidth(39.0))
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(StringConstants.kLblYourEmail)
+                            .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
+                            .fontWeight(.bold)
+                            .foregroundColor(ColorConstants.Black900)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.leading)
+                            .frame(width: getRelativeWidth(80.0), height: getRelativeHeight(16.0),
+                                   alignment: .topLeading)
+                            .padding(.trailing)
+                        Group {
+                            HStack {
+                                TextField(StringConstants.kMsgEnterYourEmai2,
+                                          text: $signupViewModel.frameText)
+                                    .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                                    .foregroundColor(ColorConstants.Bluegray100)
+                                    .padding()
+                                    .keyboardType(.emailAddress)
+                            }
+                            .onChange(of: signupViewModel.frameText) { newValue in
+
+                                signupViewModel.isValidFrameText = newValue
+                                    .isValidEmail(isMandatory: true)
+                            }
+                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                                   alignment: .leading)
+                            .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                                    bottomRight: 5.0)
+                                    .stroke(ColorConstants.Gray300,
+                                            lineWidth: 1))
+                            .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                                       bottomRight: 5.0)
+                                    .fill(ColorConstants.WhiteA700))
+                            .padding(.vertical, getRelativeHeight(5.0))
+                            if !signupViewModel.isValidFrameText {
+                                Text("Please enter valid email.")
+                                    .foregroundColor(Color.red)
+                                    .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                                    .frame(width: getRelativeWidth(305.0),
+                                           height: getRelativeHeight(48.0), alignment: .leading)
+                            }
+                        }
                     }
-                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(86.0),
                            alignment: .center)
-                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                            bottomRight: 5.0)
-                            .stroke(ColorConstants.Gray300,
-                                    lineWidth: 1))
-                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                               bottomRight: 5.0)
-                            .fill(ColorConstants.WhiteA700))
-                    .padding(.horizontal, getRelativeWidth(4.0))
+                    .shadow(color: ColorConstants.Black9003f, radius: 4, x: 0, y: 4)
+                    .padding(.top, getRelativeHeight(6.0))
+                    .padding(.horizontal, getRelativeWidth(39.0))
                     ZStack(alignment: .leading) {
                         Text(StringConstants.kLblGetStarted)
                             .font(FontScheme.kInterExtraBold(size: getRelativeHeight(20.0)))
@@ -131,22 +140,40 @@ struct SignupView: View {
                                 .frame(width: getRelativeWidth(115.0),
                                        height: getRelativeHeight(16.0), alignment: .topLeading)
                                 .padding(.trailing)
-                            HStack {
-                                TextField(StringConstants.kMsgEnterYourPass2, text: $frameoneText)
-                                    .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
-                                    .foregroundColor(ColorConstants.Bluegray100)
-                                    .padding()
-                                    .keyboardType(.default)
+                            Group {
+                                HStack {
+                                    TextField(StringConstants.kMsgEnterYourPass2,
+                                              text: $signupViewModel.frameoneText)
+                                        .font(FontScheme
+                                            .kInterRegular(size: getRelativeHeight(14.0)))
+                                        .foregroundColor(ColorConstants.Bluegray100)
+                                        .padding()
+                                        .keyboardType(.default)
+                                }
+                                .onChange(of: signupViewModel.frameoneText) { newValue in
+
+                                    signupViewModel.isValidFrameoneText = newValue
+                                        .isValidPassword(isMandatory: true)
+                                }
+                                .frame(width: getRelativeWidth(305.0),
+                                       height: getRelativeHeight(48.0), alignment: .leading)
+                                .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0,
+                                                        bottomLeft: 5.0,
+                                                        bottomRight: 5.0)
+                                        .stroke(ColorConstants.Gray300,
+                                                lineWidth: 1))
+                                .background(RoundedCorners(topLeft: 5.0, topRight: 5.0,
+                                                           bottomLeft: 5.0, bottomRight: 5.0)
+                                        .fill(ColorConstants.WhiteA700))
+                                if !signupViewModel.isValidFrameoneText {
+                                    Text("Please enter valid password.")
+                                        .foregroundColor(Color.red)
+                                        .font(FontScheme
+                                            .kInterRegular(size: getRelativeHeight(14.0)))
+                                        .frame(width: getRelativeWidth(305.0),
+                                               height: getRelativeHeight(48.0), alignment: .leading)
+                                }
                             }
-                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
-                                   alignment: .leading)
-                            .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                                    bottomRight: 5.0)
-                                    .stroke(ColorConstants.Gray300,
-                                            lineWidth: 1))
-                            .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                                       bottomRight: 5.0)
-                                    .fill(ColorConstants.WhiteA700))
                         }
                         .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(67.0),
                                alignment: .leading)
@@ -154,8 +181,7 @@ struct SignupView: View {
                     .hideNavigationBar()
                     .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(67.0),
                            alignment: .center)
-                    .padding(.top, getRelativeHeight(13.0))
-                    .padding(.horizontal, getRelativeWidth(4.0))
+                    .padding(.horizontal, getRelativeWidth(39.0))
                     HStack {
                         Text(StringConstants.kLblNext)
                             .font(FontScheme.kInterExtraBold(size: getRelativeHeight(16.0)))
@@ -177,12 +203,16 @@ struct SignupView: View {
                             .padding(.leading, getRelativeWidth(6.0))
                             .padding(.trailing, getRelativeWidth(105.0))
                     }
+                    .onTapGesture {
+                        signupViewModel.nextScreen = "AllowlocationView"
+                    }
                     .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
                            alignment: .center)
                     .background(RoundedCorners(topLeft: 25.5, topRight: 25.5, bottomLeft: 25.5,
                                                bottomRight: 25.5)
                             .fill(ColorConstants.Green401))
                     .padding(.top, getRelativeHeight(41.0))
+                    .padding(.horizontal, getRelativeWidth(39.0))
                     VStack {
                         Text(StringConstants.kMsgAlreadyHaveAn)
                             .font(FontScheme.kNunitoRegular(size: getRelativeHeight(16.0)))
@@ -193,6 +223,9 @@ struct SignupView: View {
                             .frame(width: getRelativeWidth(250.0), height: getRelativeHeight(17.0),
                                    alignment: .topLeading)
                             .padding(.horizontal, getRelativeWidth(21.0))
+                            .onTapGesture {
+                                signupViewModel.nextScreen = "LoginView"
+                            }
                         HStack {
                             Divider()
                                 .frame(width: getRelativeWidth(93.0),
@@ -244,22 +277,33 @@ struct SignupView: View {
                     }
                     .frame(width: getRelativeWidth(306.0), height: getRelativeHeight(124.0),
                            alignment: .center)
-                    .padding(.top, getRelativeHeight(25.0))
-                    .padding(.leading, getRelativeWidth(4.0))
+                    .padding(.vertical, getRelativeHeight(25.0))
+                    .padding(.horizontal, getRelativeWidth(39.0))
                 }
-                .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(371.0),
-                       alignment: .center)
-                .padding(.vertical, getRelativeHeight(5.0))
-                .padding(.horizontal, getRelativeWidth(39.0))
+                .frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
+                .background(ColorConstants.WhiteA700)
+                .padding(.top, getRelativeHeight(30.0))
+                .padding(.bottom, getRelativeHeight(10.0))
+                Group {
+                    NavigationLink(destination: LoginView(),
+                                   tag: "LoginView",
+                                   selection: $signupViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
+                    NavigationLink(destination: AllowlocationView(),
+                                   tag: "AllowlocationView",
+                                   selection: $signupViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
+                }
             }
-            .frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             .background(ColorConstants.WhiteA700)
-            .padding(.top, getRelativeHeight(30.0))
-            .padding(.bottom, getRelativeHeight(10.0))
+            .ignoresSafeArea()
+            .hideNavigationBar()
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        .background(ColorConstants.WhiteA700)
-        .ignoresSafeArea()
         .hideNavigationBar()
     }
 }

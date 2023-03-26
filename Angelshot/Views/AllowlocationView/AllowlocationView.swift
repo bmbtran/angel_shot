@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AllowlocationView: View {
+    @StateObject var allowlocationViewModel = AllowlocationViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack {
@@ -54,6 +55,15 @@ struct AllowlocationView: View {
                         .padding(.bottom, getRelativeHeight(23.0))
                         .padding(.leading, getRelativeWidth(8.0))
                         .padding(.trailing, getRelativeWidth(103.0))
+                }
+                .onTapGesture {
+                    let location = LocationPermission()
+                    location.request()
+                    location.result = { isGranted in
+                        if !isGranted {
+                            location.onDeniedOrRestricted()
+                        }
+                    }
                 }
                 .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
                        alignment: .center)

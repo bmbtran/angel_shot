@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ReportmodeOneView: View {
+    @StateObject var reportmodeOneViewModel = ReportmodeOneViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var frameText: String = ""
     var body: some View {
         ZStack(alignment: .center) {
             VStack {
@@ -35,23 +35,38 @@ struct ReportmodeOneView: View {
                            alignment: .topLeading)
                     .padding(.top, getRelativeHeight(29.0))
                     .padding(.horizontal, getRelativeWidth(17.0))
-                HStack {
-                    TextField(StringConstants.kLblEnterYourName, text: $frameText)
-                        .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
-                        .foregroundColor(ColorConstants.Bluegray100)
-                        .padding()
-                        .keyboardType(.alphabet)
+                Group {
+                    HStack {
+                        TextField(StringConstants.kLblEnterYourName,
+                                  text: $reportmodeOneViewModel.frameText)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .foregroundColor(ColorConstants.Bluegray100)
+                            .padding()
+                            .keyboardType(.alphabet)
+                    }
+                    .onChange(of: reportmodeOneViewModel.frameText) { newValue in
+
+                        reportmodeOneViewModel.isValidFrameText = newValue
+                            .isText(isMandatory: false)
+                    }
+                    .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                           alignment: .trailing)
+                    .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                            bottomRight: 5.0)
+                            .stroke(ColorConstants.Gray300,
+                                    lineWidth: 1))
+                    .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
+                                               bottomRight: 5.0)
+                            .fill(ColorConstants.WhiteA700))
+                    .padding(.leading, getRelativeWidth(10.0))
+                    if !reportmodeOneViewModel.isValidFrameText {
+                        Text("Please enter valid text.")
+                            .foregroundColor(Color.red)
+                            .font(FontScheme.kInterRegular(size: getRelativeHeight(14.0)))
+                            .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
+                                   alignment: .trailing)
+                    }
                 }
-                .frame(width: getRelativeWidth(305.0), height: getRelativeHeight(48.0),
-                       alignment: .trailing)
-                .overlay(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                        bottomRight: 5.0)
-                        .stroke(ColorConstants.Gray300,
-                                lineWidth: 1))
-                .background(RoundedCorners(topLeft: 5.0, topRight: 5.0, bottomLeft: 5.0,
-                                           bottomRight: 5.0)
-                        .fill(ColorConstants.WhiteA700))
-                .padding(.leading, getRelativeWidth(10.0))
                 Text(StringConstants.kMsgYourPhoneNumb)
                     .font(FontScheme.kInterBold(size: getRelativeHeight(16.0)))
                     .fontWeight(.bold)

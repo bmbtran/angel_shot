@@ -60,5 +60,5 @@
 <string>InterSemiBold.ttf</string>
 <string>NunitoRegular.ttf</string>
 </array>
-<key>NSLocationUsageDescription</key><string>Allow Currunt location for google Maps</string><key>NSLocationWhenInUseUsageDescription</key><string>Allow Currunt location for google Maps</string></dict>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key><string>Your app uses location services always and also when the app is running</string><key>NSLocationWhenInUseUsageDescription</key><string>Your app uses location services only when the app is running</string></dict>
 </plist>

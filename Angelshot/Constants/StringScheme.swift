@@ -8,6 +8,7 @@ struct StringConstants {
     static let kMsgMakeAFakeCal: String = "Make a fake call"
     static let kLblHome: String = "Home"
     static let kMsgAlreadyHaveAn: String = "Already have an account?  Sign in"
+    static let kLblDescription: String = "Description:"
     static let kMsgYourPhoneNumb: String = "Your phone number (required)"
     static let kMsgEnterYourOpti: String = "Enter your Optional\nEmergency contacts:"
     static let kMsgEnterYourPass: String = "Enter your password*"
