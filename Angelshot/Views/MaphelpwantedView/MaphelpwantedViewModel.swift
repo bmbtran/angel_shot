@@ -1,6 +1,6 @@
 import Foundation
 import SwiftUI
 
-class MapViewModel: ObservableObject {
+class MaphelpwantedViewModel: ObservableObject {
     @Published var nextScreen: String? = nil
 }

@@ -314,9 +314,9 @@ struct OptionalemergencycontactView: View {
                                 .padding(.vertical, getRelativeHeight(26.0))
                                 .padding(.leading, getRelativeWidth(6.0))
                                 .padding(.trailing, getRelativeWidth(105.0))
-                                .onTapGesture {
-                                    optionalemergencycontactViewModel.nextScreen = "HomeView"
-                                }
+                        }
+                        .onTapGesture {
+                            optionalemergencycontactViewModel.nextScreen = "HomeView"
                         }
                         .frame(width: getRelativeWidth(311.0), height: getRelativeHeight(51.0),
                                alignment: .center)

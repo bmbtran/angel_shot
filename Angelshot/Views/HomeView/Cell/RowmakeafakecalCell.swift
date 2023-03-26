@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct RowmakeafakecalCell: View {
+    var columnmakeafakecalClick: (() -> Void)?
+    var columnsendsmsClick: (() -> Void)?
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 0) {
@@ -31,6 +33,9 @@ struct RowmakeafakecalCell: View {
                     .scaledToFit()
                     .padding(.vertical, getRelativeHeight(4.0))
                     .padding(.horizontal, getRelativeWidth(13.0))
+            }
+            .onTapGesture {
+                columnmakeafakecalClick?()
             }
             .frame(width: getRelativeWidth(165.0), height: getRelativeHeight(120.0),
                    alignment: .leading)
@@ -76,6 +81,9 @@ struct RowmakeafakecalCell: View {
                        alignment: .leading)
                 .padding(.vertical, getRelativeHeight(1.0))
                 .padding(.horizontal, getRelativeWidth(10.0))
+            }
+            .onTapGesture {
+                columnsendsmsClick?()
             }
             .frame(width: getRelativeWidth(165.0), height: getRelativeHeight(120.0),
                    alignment: .leading)

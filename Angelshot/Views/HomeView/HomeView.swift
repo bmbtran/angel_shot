@@ -63,7 +63,11 @@ struct HomeView: View {
                                 ScrollView(.vertical, showsIndicators: false) {
                                     LazyVStack {
                                         ForEach(0 ... 1, id: \.self) { index in
-                                            RowmakeafakecalCell()
+                                            RowmakeafakecalCell(columnmakeafakecalClick: {
+                                                homeViewModel.nextScreen = "HelpnearbyView"
+                                            }, columnsendsmsClick: {
+                                                homeViewModel.nextScreen = "SmsView"
+                                            })
                                         }
                                     }
                                 }
@@ -146,8 +150,32 @@ struct HomeView: View {
                 .padding(.top, getRelativeHeight(30.0))
                 .padding(.bottom, getRelativeHeight(10.0))
                 Group {
+                    NavigationLink(destination: HelpnearbyView(),
+                                   tag: "HelpnearbyView",
+                                   selection: $homeViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
+                    NavigationLink(destination: SmsView(),
+                                   tag: "SmsView",
+                                   selection: $homeViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
                     NavigationLink(destination: ProfileView(),
                                    tag: "ProfileView",
+                                   selection: $homeViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
+                    NavigationLink(destination: ReportmodeView(),
+                                   tag: "ReportmodeView",
+                                   selection: $homeViewModel.nextScreen,
+                                   label: {
+                                       EmptyView()
+                                   })
+                    NavigationLink(destination: InitialmapView(),
+                                   tag: "InitialmapView",
                                    selection: $homeViewModel.nextScreen,
                                    label: {
                                        EmptyView()
