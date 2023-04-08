@@ -57,3 +57,7 @@ Inter-SemiBold
 InterRegular
 Inter-Medium
 Inter-ExtraBold```
+
+
+https://user-images.githubusercontent.com/103015816/230702812-15fcb404-a52a-49dd-b5d4-cdc35424700f.mov
+
